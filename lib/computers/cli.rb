@@ -9,13 +9,18 @@ class Computers::CLI
 
   def list_pcs
     @pcs = Computers::PCs.all
+    @pcs.each.with_index(1) do |pc, i|
+      puts "#{i}: #{pc.name}"
+    end
   end
 
   def menu
     puts "Please enter the number for the computer your would like more info on, or type exit:"
     input = nil
+
     while input != "exit"
       input = gets.strip.downcase
+
       if input.to_i > 0
         puts @pcs[input.to_i-1]
       elsif input == "computers"
