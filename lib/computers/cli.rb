@@ -1,6 +1,7 @@
 class Computers::CLI
 
   def call
+    Computers::Scraper.get_page
     puts "Gaming PCs of 2019"
     list_pcs
     menu
