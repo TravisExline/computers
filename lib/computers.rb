@@ -1,6 +1,2 @@
-require "computers/version"
-
-module Computers
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "computers/version"
+require_relative './computers/cli'

@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+require './lib/computers'
+Computers::CLI.new.call
