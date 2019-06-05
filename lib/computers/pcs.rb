@@ -1,5 +1,5 @@
 class Computers::PCs
-  attr_accessor :name, :cpu, :graphics, :ram, :storage, :price
+  attr_accessor :name, :cpu, :graphics, :ram, :storage
   @@all = []
 
   def initialize(name)
