@@ -8,7 +8,7 @@ class Computers::CLI
   end
 
   def list_pcs
-    puts "All PCs will be listed here"
+    @pcs = Computers::PCs.all
   end
 
   def menu
