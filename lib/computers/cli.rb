@@ -16,14 +16,9 @@ class Computers::CLI
     input = nil
     while input != "exit"
       input = gets.strip.downcase
-      case input
-      when "1"
-        puts "comp info"
-        puts "Type computers to see the other computers, or type exit."
-      when "2"
-        puts "comp info 2"
-        puts "Type computers to see the other computers, or type exit."
-      when "computers"
+      if input.to_i > 0
+        puts @pcs[input.to_i-1]
+      elsif input == "computers"
         list_pcs
       else
         puts "Invalid input, try again!"
