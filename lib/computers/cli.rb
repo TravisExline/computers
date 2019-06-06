@@ -10,8 +10,8 @@ class Computers::CLI
 
   def list_pcs
     @pcs = Computers::PCs.all
-    @pcs.each.with_index(1) do |pc, i|
-      puts "#{i}: #{pc.name}"
+    @pcs.each.with_index(1) do |pc|
+      puts "#{pc.name}"
     end
   end
 
