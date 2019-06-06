@@ -5,11 +5,15 @@ WEB_COMPUTERS = "https://techradar.com/news/computing/pc/10-of-the-best-gaming-p
 class Computers::Scraper
 
   def self.scrape
-    @doc = open(WEB_COMPUTERS)
-    @parsed_doc = Nokogiri::HTML(doc)
+    doc = open(WEB_COMPUTERS)
+    parsed_doc = Nokogiri::HTML(doc)
     computer_name = parsed_doc.css("h3")
     computer_name.each do |pc_name|
       Computers::PCs.new(pc_name.text)
+      binding.pry
     end
   end
 end
+
+
+#specs  => parsed_doc.css("p.specs__container").first.text 
