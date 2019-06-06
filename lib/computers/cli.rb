@@ -1,6 +1,7 @@
 class Computers::CLI
 
   def call
+    system('clear')
     puts "Gaming PCs of 2019"
     Computers::Scraper.scrape
     list_pcs
