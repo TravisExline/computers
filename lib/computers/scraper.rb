@@ -10,10 +10,18 @@ class Computers::Scraper
     computer_name = parsed_doc.css("h3")
     computer_name.each do |pc_name|
       Computers::PCs.new(pc_name.text)
-      binding.pry
+    end
+  end
+
+  def self.scrape_specs
+    doc = open(WEB_COMPUTERS)
+    parsed_doc = Nokogiri::HTML(doc)
+    computer_specs = parsed_doc.css("p.specs__container")
+    computer_specs.each do |pc_specs|
+      Computers::PCs.specs = pc_specs.first.text.to_a("|") #puts individual specs into array
     end
   end
 end
 
 
-#specs  => parsed_doc.css("p.specs__container").first.text 
+#specs  => parsed_doc.css("p.specs__container").first.text

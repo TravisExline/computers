@@ -17,6 +17,7 @@ class Computers::CLI
   end
 
   def menu
+    @pc_specs = Computers::PCs.specs
     puts "Please enter the number for the computer your would like more info on, or type exit:"
     input = nil
 
@@ -24,7 +25,7 @@ class Computers::CLI
       input = gets.strip.downcase
 
       if input.to_i > 0
-        puts @pcs[input.to_i-1]
+        puts @pc_specs
       elsif input == "computers"
         list_pcs
       else
