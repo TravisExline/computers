@@ -9,13 +9,14 @@ class Computers::Scraper
   parsed_doc = Nokogiri::HTML(doc)
   computer_name = parsed_doc.css("h3")
   computer_details = parsed_doc.css(".news-article")
-  computer_name.each do |pc_name, cpu, graphics, ram, storage|
+  computer_name.each do |pc_name, cpu, graphics, ram, storage, brand|
     pc_specs = computer_details.css(".specs__container")
     cpu = pc_specs.text.split(" | ")[0]
     graphics = pc_specs.text.split(" | ")[1]
     ram = pc_specs.text.split(" | ")[2]
     storage = pc_specs.text.split(" | ")[3]
-    Computers::PCs.new(pc_name.text, cpu, graphics, ram, storage)
+    brand = pc_name.text.split(" ")[1]
+    Computers::PCs.new(pc_name.text, cpu, graphics, ram, storage, brand)
   end
 end
 end

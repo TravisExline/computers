@@ -2,7 +2,7 @@ class Computers::PCs
   attr_accessor :name, :cpu, :graphics, :ram, :storage, :brand
   @@all = []
 
-  def initialize(name, cpu, graphics, ram, storage)
+  def initialize(name, cpu, graphics, ram, storage, brand)
     @name = name
     @cpu = cpu
     @graphics = graphics
@@ -16,7 +16,11 @@ class Computers::PCs
     @@all
   end
 
-  def brand_name
-    brand.name if brand
+  def brand_name=(brand)
+    if (self.brand.nil?)
+      self.brand = Brand.new(name)
+    else
+      self.brand.name = brand
+    end
   end
 end

@@ -6,7 +6,6 @@ class Computers::CLI
     Computers::Scraper.scrape
     list_pcs
     menu
-    binding.pry
     user_input
     goodbye
   end
@@ -33,6 +32,7 @@ class Computers::CLI
         puts @pcs[input.to_i-1].graphics
         puts @pcs[input.to_i-1].ram
         puts @pcs[input.to_i-1].storage
+        puts @pcs[input.to_i-1].brand
       elsif input == "computers"
         list_pcs
       else
