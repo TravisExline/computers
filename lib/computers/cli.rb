@@ -6,6 +6,8 @@ class Computers::CLI
     Computers::Scraper.scrape
     list_pcs
     menu
+    binding.pry
+    user_input
     goodbye
   end
 
@@ -18,6 +20,9 @@ class Computers::CLI
 
   def menu
     puts "Please enter the number for the computer your would like more info on, or type exit:"
+  end
+
+  def user_input
     input = nil
 
     while input != "exit"
