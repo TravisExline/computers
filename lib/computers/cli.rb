@@ -18,7 +18,23 @@ class Computers::CLI
   end
 
   def menu
-    puts "Please enter the number for the computer your would like more info on, or type exit:"
+    puts "Please enter the number for the computer you would like more info on, brands to see a list of brands, or type exit:"
+  end
+
+  def find_by_brand
+    puts "Please select which brand you would like to see:"
+    brand_array = Brand.all.map{|brand| brand.name}
+    Brand.all.each.with_index(1){|brand,index| puts "#{index}. #{brand.name}"}
+    input=gets.strip.to_i
+    if (1..7).to_a.include?(input)
+      puts "#{Brand.all[input-1].name} computers:"
+      @pcs = Computers::PCs.all.select{|pc| pc.brand == Brand.all[input-1]}
+      list_pcs(@pcs)
+    elsif input == "exit"
+      list_pcs
+    else
+      puts "Please enter a valid number"
+    end
   end
 
   def user_input
@@ -35,6 +51,8 @@ class Computers::CLI
         puts @pcs[input.to_i-1].brand
       elsif input == "computers"
         list_pcs
+      elsif input == "brands"
+        find_by_brand
       else
         puts "Invalid input, try again!"
       end
