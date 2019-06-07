@@ -4,32 +4,23 @@ WEB_COMPUTERS = "https://techradar.com/news/computing/pc/10-of-the-best-gaming-p
 
 class Computers::Scraper
 
-#  def self.get_page
-#    Nokogiri::HTML(open("https://techradar.com/news/computing/pc/10-of-the-best-gaming-pcs-you-can-buy-in-2015-1304263"))
-#  end
-
-#  def self.scrape_specs
-#    pc_hash = {}
-#    get_page.css(".text-copy").each do |pc|
-#      pc_name = pc.css("h3").first.text
-#      specs_name = pc.css("strong").first.text #creates a hash with the PC name as the key
-#      pc_hash[pc_name] = {
-#        specs_name => pc.css("p.specs__container").first.text
-#      } #creates nested hash with each spec as key/specific spec as value
-#    end
-#    pc_hash
-#  end
-
   def self.scrape
-    doc = open(WEB_COMPUTERS)
-    parsed_doc = Nokogiri::HTML(doc)
-    computer_name = parsed_doc.css("h3")
-    computer_name.each do |pc_name|
-      Computers::PCs.new(pc_name.text)
-    end
+  doc = open(WEB_COMPUTERS)
+  parsed_doc = Nokogiri::HTML(doc)
+  computer_name = parsed_doc.css("h3")
+  computer_details = parsed_doc.css(".news-article")
+  computer_name.each do |pc_name, cpu, graphics, ram, storage|
+    pc_specs = computer_details.css(".specs__container")
+    cpu = pc_specs.text.split(" | ")[0]
+    graphics = pc_specs.text.split(" | ")[1]
+    ram = pc_specs.text.split(" | ")[2]
+    storage = pc_specs.text.split(" | ")[3]
+    Computers::PCs.new(pc_name.text, cpu, graphics, ram, storage)
   end
 end
+end
 
-
+#computer_details = parsed_doc.css(".specs__container")
+#computer_details.text.split(" | ")
 #specs  => parsed_doc.css("p.specs__container").first.text
 #parsed_doc.css("strong") => STATS KEY!!!!!!

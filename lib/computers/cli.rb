@@ -24,7 +24,10 @@ class Computers::CLI
       input = gets.strip.downcase
 
       if input.to_i > 0
-        puts @pcs[input.to_i-1].name
+        puts @pcs[input.to_i-1].cpu
+        puts @pcs[input.to_i-1].graphics
+        puts @pcs[input.to_i-1].ram
+        puts @pcs[input.to_i-1].storage
       elsif input == "computers"
         list_pcs
       else
