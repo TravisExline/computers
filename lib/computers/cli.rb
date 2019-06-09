@@ -2,6 +2,7 @@ class Computers::CLI
 
   def call
     system('clear')
+    Computers::Brand.scrape_brand
     puts "Gaming PCs of 2019"
     Computers::Scraper.scrape
     list_pcs
@@ -23,13 +24,10 @@ class Computers::CLI
 
   def find_by_brand
     puts "Please select which brand you would like to see:"
-    brand_array = Brand.all.map{|brand| brand.name}
-    Brand.all.each.with_index(1){|brand,index| puts "#{index}. #{brand.name}"}
+    puts Computers::Brand.all
     input=gets.strip.to_i
-    if (1..7).to_a.include?(input)
-      puts "#{Brand.all[input-1].name} computers:"
-      @pcs = Computers::PCs.all.select{|pc| pc.brand == Brand.all[input-1]}
-      list_pcs(@pcs)
+    if (1..10).to_a.include?(input)
+      Computers::PCs.all.select{|pc| pc.brand == Computers::Brand.all[input-1]}
     elsif input == "exit"
       list_pcs
     else
