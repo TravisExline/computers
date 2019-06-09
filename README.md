@@ -1,8 +1,6 @@
 # Computers
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/computers`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Gives a quick, detailed summary of the top computers of 2019 thus far.  Can display specs as well as brands according to the available computer models.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Follow the instructions given in the CLI, and explore the different computers!
 
 ## Development
 
