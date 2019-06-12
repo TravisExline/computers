@@ -16,11 +16,11 @@ class Computers::PCs
     @@all
   end
 
-  def brand_name=(brand)
-    if (self.brand.nil?)
-      self.brand = Computers::Brand.new(name)
-    else
-      self.brand.name = brand
-    end
-  end
+  # def brand_name=(brand)
+  #   if (self.brand.nil?)
+  #     self.brand = Computers::Brand.new(name)
+  #   else
+  #     self.brand.name = brand
+  #   end
+  # end
 end
