@@ -58,5 +58,4 @@ class Computers::Brand
   def computers
     Computers::PCs.all.select {|computer| computer.brand == self}
   end
-
 end

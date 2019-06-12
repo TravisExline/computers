@@ -28,10 +28,14 @@ class Computers::CLI
       puts "#{i+1}: " + brand.name
     end
     input=gets.strip.to_i
-    if (1..10).to_a.include?(input)
+    if (1..16).to_a.include?(input)
       brand = Computers::Brand.find_by_index(input)
       brand.computers.each do |pc|
         puts pc.name
+        #input=gets.strip.downcase
+        # if (1..2).to_a.include?(input)
+        #   puts brand.computers[input]
+        # end
       end
       # Computers::PCs.all.select do |pc|
       #   pc.brand == Computers::Brand.all[input-1].name
@@ -56,7 +60,7 @@ class Computers::CLI
         puts @pcs[input.to_i-1].graphics
         puts @pcs[input.to_i-1].ram
         puts @pcs[input.to_i-1].storage
-        puts @pcs[input.to_i-1].brand
+        puts @pcs[input.to_i-1].brand.name
       elsif input == "computers"
         list_pcs
       elsif input == "brands"
