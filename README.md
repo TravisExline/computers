@@ -39,3 +39,17 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the Computers project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/'incredible-demo-1397'/computers/blob/master/CODE_OF_CONDUCT.md).
+
+Deliverables for next review
+
+Refactoring:
+
+*  Brand class
+    Create a find_or_create_by class method
+    Create a find_by_index class method
+
+*  cli.rb - lines 32-34
+    Can we find a brand based on user input, save it to a variable, and then call an instance method on that brand to get us back its computers?
+
+* cli.rb - line 40
+    Allow a user to see more information about a particular computer from the Brand options, and create the necessary logic to allow a user to return to all computers, brands, exit, etc.
