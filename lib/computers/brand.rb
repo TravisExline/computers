@@ -9,7 +9,7 @@ class Computers::Brand
 
   def initialize(name)
     @name = name
-    @@all << self
+    @@all << self unless self.name == name
   end
 
   def self.all
