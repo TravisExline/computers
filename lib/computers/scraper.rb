@@ -15,8 +15,6 @@ class Computers::Scraper
     graphics = pc_specs.text.split(" | ")[1]
     ram = pc_specs.text.split(" | ")[2]
     storage = pc_specs.text.split(" | ")[3]
-    #brand = pc_name.text.split(" ")[1]
-    #create new instance of brand here using a find_or_create_by class method
     brand = Computers::Brand.find_or_create_by_name(pc_name.text.split(" ")[1])
     new_comp = Computers::PCs.new(pc_name.text, cpu, graphics, ram, storage, brand)
   end

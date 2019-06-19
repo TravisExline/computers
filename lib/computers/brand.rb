@@ -36,25 +36,6 @@ class Computers::Brand
     @@all[number]
   end
 
-  # def self.scrape_brand
-  #   computer_array = []
-  #   doc = open(WEB_COMPUTERS)
-  #   parsed_doc = Nokogiri::HTML(doc)
-  #   computer_name = parsed_doc.css("h3")
-  #   computer_name.each do |pc|
-  #     computer_array << pc.text.split(". ")[1]
-  #   end
-  #   computer_array.pop
-  #   computer_array.each do |computer|
-  #     self.new(computer.split(" ")[0])
-  #   end
-  # end
-  #
-  # def add_computer_by_name(name)
-  #   computer = Computers::PCs.new(name)
-  #   computer.brand = self
-  # end
-
   def computers
     Computers::PCs.all.select {|computer| computer.brand == self}
   end

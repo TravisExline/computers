@@ -28,42 +28,19 @@ class Computers::CLI
       puts "#{i+1}: " + brand.name
     end
     input=gets.strip.to_i
-    if (1..9).to_a.include?(input)
+    if (1..10).to_a.include?(input)
       brand = Computers::Brand.find_by_index(input-1)
       puts "Please enter the number for the computer you would like to see."
       brand.computers.each do |pc|
         puts pc.name
-        #brand_pc
-        #input=gets.strip.downcase
-        # if (1..2).to_a.include?(input)
-        #   puts brand.computers[input]
-        # end
       end
-      # Computers::PCs.all.select do |pc|
-      #   pc.brand == Computers::Brand.all[input-1].name
-      # end.each do |pc|
-      #   puts pc.name
-      # end
+
     elsif input == "exit"
       list_pcs
     else
       puts "Please enter a valid number"
     end
   end
-
-  # def brand_pc
-  #   "Which pc by this brand would you like to see?"
-  #   input = gets.strip.to_i
-  #   if (1..10).to_a.include?(input)
-  #     computer = Computers::PCs.all
-  #     computer.all.each do |pc|
-  #       puts pc[input-1].cpu
-  #       puts pc[input-1].graphics
-  #       puts pc[input-1].ram
-  #       puts pc[input-1].storage
-  #     end
-  #   end
-  # end
 
   def user_input
     input = nil
